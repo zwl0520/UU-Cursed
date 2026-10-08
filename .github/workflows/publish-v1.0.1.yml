@@ -1,0 +1,39 @@
+name: Publish UU Cursed 1.0.1
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/publish-v1.0.1.yml
+      - releases/v1.0.1/**
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-uu-cursed-v1.0.1
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out release files
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Verify and publish release assets
+        working-directory: releases/v1.0.1
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          sha256sum --check UU_Cursed_v1.0.1_JAR_SHA256.txt
+          uu_release_draft=$(gh release view v1.0.1 --repo "$GITHUB_REPOSITORY" --json isDraft --jq '.isDraft')
+          if [ "$uu_release_draft" != "true" ]; then
+            echo "Release is already published."
+            exit 0
+          fi
+          gh release upload v1.0.1 UU_Cursed_v1.0.1_Fabric_1.21.11.jar UU_Cursed_v1.0.1_JAR_SHA256.txt --repo "$GITHUB_REPOSITORY" --clobber
+          gh release edit v1.0.1 --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --draft=false --latest --notes-file RELEASE_NOTES.md
