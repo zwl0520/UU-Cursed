@@ -1,0 +1,41 @@
+{
+  "name": "Publish verified UU Cursed 2.0.0",
+  "on": {
+    "push": {
+      "branches": [
+        "main"
+      ],
+      "paths": [
+        ".github/workflows/publish-v2.0.0.yml",
+        "releases/v2.0.0/**"
+      ]
+    },
+    "workflow_dispatch": {}
+  },
+  "permissions": {
+    "contents": "write"
+  },
+  "concurrency": {
+    "group": "publish-uu-cursed-v2.0.0",
+    "cancel-in-progress": false
+  },
+  "jobs": {
+    "publish": {
+      "runs-on": "ubuntu-latest",
+      "timeout-minutes": 10,
+      "steps": [
+        {
+          "name": "Check out release manifest and notes",
+          "uses": "actions/checkout@11d5960a326750d5838078e36cf38b85af677262"
+        },
+        {
+          "name": "Reassemble, verify and publish release",
+          "env": {
+            "GH_TOKEN": "${{ secrets.GITHUB_TOKEN }}"
+          },
+          "run": "python3 - <<'PY'\nimport base64,hashlib,json,os,subprocess,zipfile\nfrom pathlib import Path\nrepo=os.environ['GITHUB_REPOSITORY'];base=Path('releases/v2.0.0');manifest=json.loads((base/'manifest.json').read_text())\nassert manifest['tag']=='v2.0.0' and manifest['release_id']==426242977\nout=Path('verified-release');out.mkdir();jar=out/manifest['name'];whole=hashlib.sha256()\nwith jar.open('wb') as f:\n for i,part in enumerate(manifest['parts']):\n  result=json.loads(subprocess.check_output(['gh','api',f\"repos/{repo}/git/blobs/{part['sha']}\"]))\n  assert result['encoding']=='base64';data=base64.b64decode(result['content']);assert len(data)==part['size'];assert hashlib.sha256(data).hexdigest()==part['sha256'];f.write(data);whole.update(data)\n  print(f\"Verified artifact part {i+1}/{len(manifest['parts'])}\",flush=True)\nassert jar.stat().st_size==manifest['size'] and whole.hexdigest()==manifest['sha256']\nwith zipfile.ZipFile(jar) as z:\n assert z.testzip() is None;meta=json.loads(z.read('fabric.mod.json'));assert meta['version']=='2.0.0+mc1.21.11' and meta['depends']['minecraft']=='=1.21.11' and meta['depends']['java']=='>=21'\n assert meta['depends']['fabricloader']=='>=0.19.5' and meta['depends']['fabric-api']=='>=0.141.6'\nrelease=json.loads(subprocess.check_output(['gh','api',f\"repos/{repo}/releases/{manifest['release_id']}\"]))\nassert release['id']==manifest['release_id']\nif not release['draft']:\n assets={a['name']:a for a in release['assets']};assert assets[manifest['name']]['digest']=='sha256:'+manifest['sha256'];print('Verified release is already published; leaving it intact.');raise SystemExit(0)\nassert not release['assets'],'Inspect unexpected existing attachments before retrying'\nsubprocess.run(['gh','release','upload',manifest['tag'],str(jar),str(base/'SHA256SUMS.txt'),str(base/'VERSION_VERIFICATION.json'),'--repo',repo],check=True)\nrelease=json.loads(subprocess.check_output(['gh','api',f\"repos/{repo}/releases/{manifest['release_id']}\"]))\nassets={a['name']:a for a in release['assets']};assert assets[manifest['name']]['size']==manifest['size'] and assets[manifest['name']]['digest']=='sha256:'+manifest['sha256']\nsubprocess.run(['gh','release','edit',manifest['tag'],'--repo',repo,'--target',os.environ['GITHUB_SHA'],'--draft=false','--latest','--notes-file',str(base/'RELEASE_NOTES.md')],check=True)\nprint('Published verified UU Cursed 2.0.0',flush=True)\n\nPY"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "requested_version": "2.0.0",
+  "embedded_version": "2.0.0+mc1.21.11",
+  "minecraft": "=1.21.11",
+  "dependencies": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "=1.21.11",
+    "java": ">=21",
+    "fabric-api": ">=0.141.6"
+  },
+  "source_build": "2.0.9+mc1.21.11",
+  "source_sha256": "d9ba386d25cdd06a15a6b11f6aa5908520bec0f2709bc5acf2235d2fcee953ad",
+  "changed_archive_entries": [
+    "BATTLE_REFERENCES.json",
+    "HERO_ABILITIES.md",
+    "fabric.mod.json"
+  ],
+  "all_gameplay_bytecode_assets_data_unchanged": true,
+  "archive_crc_and_json_valid": true,
+  "original_verification": "UU_Cursed_v2.0.9_Verification.json",
+  "bytes": 22268532,
+  "sha256": "0894ce05b1d0146c382bb155e61bb3b5044f9cfb29ded06d2881c56d8398e06e"
+}

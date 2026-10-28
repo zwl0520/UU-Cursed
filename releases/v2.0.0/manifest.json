@@ -1,0 +1,24 @@
+{
+  "name": "UU_Cursed_v2.0.0_Fabric_1.21.11.jar",
+  "size": 22268532,
+  "sha256": "0894ce05b1d0146c382bb155e61bb3b5044f9cfb29ded06d2881c56d8398e06e",
+  "release_id": 426242977,
+  "tag": "v2.0.0",
+  "parts": [
+    {
+      "sha": "da6bcf8996136d06ee9cef6ddf8b2b748ccf8611",
+      "size": 8388608,
+      "sha256": "b4e7314cadfb0a0f89670b25578eda6d8318011cb54137331d1c18ea5f337f1d"
+    },
+    {
+      "sha": "12404d8fd6a8c66c2879896614980ec91cde30b3",
+      "size": 8388608,
+      "sha256": "bfa013dcc00c3ccc3cb0e4b317e391528cc7b10ab1eb3b8f6d438eef0259f6c7"
+    },
+    {
+      "sha": "c75b376d7fc72de5b97dd1001d744904d100b8bd",
+      "size": 5491316,
+      "sha256": "546d62fe5142f7d56d9c232ca6d7142214db6adcee0f55e0741e5e866bd4dd05"
+    }
+  ]
+}
