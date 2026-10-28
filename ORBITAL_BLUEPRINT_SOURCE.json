@@ -1,0 +1,65 @@
+{
+  "design": "UU Farlands orbital array — repeating redstone cannon body",
+  "designer": "cubicmetre (credited by Wemmbu; exact schematic revision unverified)",
+  "uploader": "AquaYAY",
+  "source_author_field": "ArcticF35",
+  "source": "https://www.abfielder.com/Products/ProductDetails.php?id=11347",
+  "official_design_credit": "https://www.youtube.com/watch?v=QhxnImk2GFQ",
+  "source_file": "45ae242febbc_Orbitals.litematic",
+  "source_sha256": "a88d40873e5edd03f82000ee93e9d9d605c55542525289aa60c45c03b4981d39",
+  "source_blocks": 205438,
+  "blocks": 7629,
+  "size": [
+    100,
+    48,
+    70
+  ],
+  "spacing": 100,
+  "binding_plates": [
+    [
+      -11,
+      26,
+      0
+    ],
+    [
+      -11,
+      26,
+      16
+    ],
+    [
+      1,
+      26,
+      14
+    ],
+    [
+      7,
+      26,
+      0
+    ]
+  ],
+  "selection": {
+    "source_x_inclusive": [
+      30,
+      99
+    ],
+    "source_y_inclusive": [
+      55,
+      102
+    ],
+    "source_z_inclusive": [
+      70,
+      169
+    ],
+    "mapping": "local x = source z - 120; local y = source y - 55; local z = 65 - source x",
+    "notes": "Measured interior 100-block repeat. Preserve cannon body at source scale; exclude outlying parallel rail lane, distant walkway and repeated neighboring units to fit the existing 70-block rift."
+  },
+  "license": "No explicit redistribution license stated on the source listing; no new license asserted over upstream geometry.",
+  "changes": [
+    "Import source block geometry and native visual model orientations without executing source data.",
+    "Do not import entities, block entities, inventories, signs or commands.",
+    "Decorative circuitry, portals and TNT remain inert; existing server artillery gameplay is unchanged.",
+    "Source water is displayed as light-blue glass and powder snow as a snow block.",
+    "The four original gold pressure plates bind a cast normal fishing rod, with equal orbital/drill probability.",
+    "Closed ender chest uses a non-ticking static shell with the native texture."
+  ]
+}

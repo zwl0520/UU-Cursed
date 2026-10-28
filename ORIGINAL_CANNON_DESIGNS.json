@@ -1,0 +1,136 @@
+{
+  "checked": "2026-10-21",
+  "visual_references_only": [
+    {
+      "url": "https://unstable-universe-mc.fandom.com/wiki/Orbital_Strike_Cannon",
+      "image": "https://static.wikia.nocookie.net/unstable-universe-mc/images/5/57/Orbital_strike.png",
+      "used_for": "General redstone machine vocabulary: stacked circuitry, exposed pistons and loading assemblies."
+    },
+    {
+      "url": "https://unstable-universe-mc.fandom.com/wiki/Ender_Pearl_Cannon",
+      "used_for": "Pearl alignment and TNT acceleration mechanism; no machine geometry obtained from this page."
+    }
+  ],
+  "not_a_replica": false,
+  "geometry_inputs": "Pearl layout remains independently generated. Current orbital body imports the cited Farlands array geometry; see per-machine provenance.",
+  "legacy_ids": "Prior inert IDs remain registered. The former independently authored octagonal layout is retained only to recognize untouched old-save blocks for migration.",
+  "pearl": {
+    "design": "UU independent pearl cannon: split timing towers and open launch well",
+    "blocks": 2660,
+    "bounds": [
+      [
+        -16,
+        16
+      ],
+      [
+        1,
+        32
+      ],
+      [
+        -5,
+        20
+      ]
+    ],
+    "size": [
+      33,
+      32,
+      26
+    ],
+    "geometry_sha256": "a622e82bb2f6ed6544b57f0e6cf521c65ee7b22ab5cbfa76b7c100cbde8dd999",
+    "independently_authored": true
+  },
+  "orbital": {
+    "design": "UU Farlands orbital array — repeating redstone cannon body",
+    "designer": "cubicmetre (credited by Wemmbu; exact schematic revision unverified)",
+    "uploader": "AquaYAY",
+    "source_author_field": "ArcticF35",
+    "source": "https://www.abfielder.com/Products/ProductDetails.php?id=11347",
+    "official_design_credit": "https://www.youtube.com/watch?v=QhxnImk2GFQ",
+    "source_file": "45ae242febbc_Orbitals.litematic",
+    "source_sha256": "a88d40873e5edd03f82000ee93e9d9d605c55542525289aa60c45c03b4981d39",
+    "source_blocks": 205438,
+    "blocks": 7629,
+    "size": [
+      100,
+      48,
+      70
+    ],
+    "spacing": 100,
+    "binding_plates": [
+      [
+        -11,
+        26,
+        0
+      ],
+      [
+        -11,
+        26,
+        16
+      ],
+      [
+        1,
+        26,
+        14
+      ],
+      [
+        7,
+        26,
+        0
+      ]
+    ],
+    "selection": {
+      "source_x_inclusive": [
+        30,
+        99
+      ],
+      "source_y_inclusive": [
+        55,
+        102
+      ],
+      "source_z_inclusive": [
+        70,
+        169
+      ],
+      "mapping": "local x = source z - 120; local y = source y - 55; local z = 65 - source x",
+      "notes": "Measured interior 100-block repeat. Preserve cannon body at source scale; exclude outlying parallel rail lane, distant walkway and repeated neighboring units to fit the existing 70-block rift."
+    },
+    "license": "No explicit redistribution license stated on the source listing; no new license asserted over upstream geometry.",
+    "changes": [
+      "Import source block geometry and native visual model orientations without executing source data.",
+      "Do not import entities, block entities, inventories, signs or commands.",
+      "Decorative circuitry, portals and TNT remain inert; existing server artillery gameplay is unchanged.",
+      "Source water is displayed as light-blue glass and powder snow as a snow block.",
+      "The four original gold pressure plates bind a cast normal fishing rod, with equal orbital/drill probability.",
+      "Closed ender chest uses a non-ticking static shell with the native texture."
+    ],
+    "geometry_sha256": "e749ace5f2eafbca5f186115fea051f96dec8f83c7e0c8d0e53ed5b66fc1eeb8"
+  },
+  "new_native_visual_aliases": 1316,
+  "behavior": "Existing pearl staging/TNT/200-tick teleport and orbital combat behavior retained. A normal rod bobber on any of the four original gold plates becomes one orbital or drill cannon with equal probability.",
+  "old_worlds": "Loaded rift chunks are incrementally upgraded once. Replace only exact old-generator states; preserve changed blocks and block entities/inventories; no extra chunks are force-loaded.",
+  "orbital_legacy_1_7_1_to_2_0_5": {
+    "design": "UU independent orbital station: octagonal gantries and eight radial launch heads",
+    "blocks": 7815,
+    "bounds": [
+      [
+        -28,
+        28
+      ],
+      [
+        0,
+        44
+      ],
+      [
+        -30,
+        28
+      ]
+    ],
+    "size": [
+      57,
+      45,
+      59
+    ],
+    "geometry_sha256": "fb9cf907429cc5f42c8e915c9a1c1b91063644286ff08a4a9297e197bb70e7ac",
+    "status": "Retained solely for conservative old-save upgrades; no longer generated."
+  }
+}
